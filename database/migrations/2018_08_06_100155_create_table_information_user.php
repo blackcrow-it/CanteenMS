@@ -24,14 +24,15 @@ class CreateTableInformationUser extends Migration
             $table->string('sdt');
             $table->string('dia_chi');
             $table->string('email');
-            $table->string('chuc_cu');
-            $table->string('chuc_cu_alias');
+            $table->string('chuc_vu');
+            $table->string('chuc_vu_alias');
             $table->dateTime('ngay_vao');
             $table->string('kieu_lam');
             $table->integer('so_ngay_nghi');
             $table->integer('luong');
             $table->text('ghi_chu');
-            $table->foreign('ten_tai_khoa')->references('email')->on('users')->onDelete('CASCADE');
+            $table->foreign('ten_tai_khoa')->references('email')->on('users');
+            // $table->foreign('chuc_vu_alias')->references('title')->on('roles');
         });
     }
 

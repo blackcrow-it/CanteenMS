@@ -16,25 +16,25 @@ class CreateRolesAndPermissionsTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->timestamps();
+            // $table->timestamps();
         });
 
-        Schema::create('permissions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('name');
-            $table->timestamps();
-        });
+        // Schema::create('permissions', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('title');
+        //     $table->string('name');
+        //     $table->timestamps();
+        // });
 
-        Schema::create('role_permission', function (Blueprint $table) {
-            $table->unsignedInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('CASCADE');
+        // Schema::create('role_permission', function (Blueprint $table) {
+        //     $table->unsignedInteger('role_id');
+        //     $table->foreign('role_id')->references('id')->on('roles')->onDelete('CASCADE');
 
-            $table->unsignedInteger('permission_id');
-            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('CASCADE');
+        //     $table->unsignedInteger('permission_id');
+        //     $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('CASCADE');
 
-            $table->primary(['role_id', 'permission_id']);
-        });
+        //     $table->primary(['role_id', 'permission_id']);
+        // });
     }
 
     /**
