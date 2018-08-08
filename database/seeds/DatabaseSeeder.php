@@ -22,5 +22,10 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert([
             'title' => 'nhan-vien'
         ]);
+  		DB::table('users')->insert(	[
+  			'name' => 'admin',
+  			'email' => 'admin@localtion.dev',
+  			'password' => '$2y$10$sM2rCd3lSioNOO1kmRNloeaZAV2r5g37UjHe5/n8fvjc9HfhfteTO'
+  		]);
     }
 }
