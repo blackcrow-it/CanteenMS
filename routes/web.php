@@ -20,3 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts/{id}', 'PostController@show');
+
+Route::get('/admin/phieu-mua-hang', 'BillController@index');
+Route::post('/admin/phieu-mua-hang/add', [
+		'as' => 'addBill',
+		'uses' => 'BillController@create'
+	]);
