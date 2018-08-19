@@ -7,7 +7,7 @@
 @section('content_header')
 @foreach($users as $p)
     <h1>Thông tin tài khoản: {{ $p->ten_tai_khoa }}</h1>
-    @endforeach
+@endforeach
 @stop
 
 @section('content')

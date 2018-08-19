@@ -10,6 +10,19 @@
 
 @section('content')
 
+ @if(isset($success))
+		<div class="alert alert-success" role="alert">{{ $success }}</div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 <html>
 <link rel="stylesheet" href="../../../public/css/ahihi.css">
 <div class="inner contact">
@@ -44,12 +57,20 @@
             <!-- tên nhân viên -->
             <input type="text" name="ten_nhan_vien" id="ten_nhan_vien" value="{{ $p->ten_nhan_vien }}" required="required" class="form" placeholder="Tên Nhân Viên"/>
             <!-- sex -->
-            <input type="text" name="gioi_tinh" id="gioi_tinh" value="{{ $p->gioi_tinh }}" required="required" class="form" placeholder="Giới tính" />
+            <select type="text" id="gioi_tinh" name="gioi_tinh" class="form">
+                <option selected> Nam...</option>
+                <option> Nữ...</option>
+            </select>
             <!-- Chức vụ -->
-            <input type="text" name="chuc_cu" id="chuc_cu" value="{{ $p->chuc_cu }}" required="required" class="form" placeholder="Chức Vụ"/>
+            <select type="text" id="chuc_cu" name="chuc_cu" class="form">
+                <option selected> Nhân viên</option>
+                <option> Nhân viên văn phòng</option>
+            </select>
             <!-- kiểu làm -->
-            <input type="text" name="kieu_lam" id="kieu_lam" value="{{ $p->kieu_lam }}" required="required" class="form" placeholder="Kiểu làm"/>
-            <!-- ghi chú -->
+            <select type="text" id="kieu_lam" name="kieu_lam" class="form">
+                <option selected> Full-time</option>
+                <option> Fart-time</option>
+            </select><!-- ghi chú -->
             <textarea cols="30" rows="6" name="ghi_chu" id="ghi_chu" value="{{ $p->ghi_chu }}" required="required" class="form" placeholder="Ghi chú"></textarea>
             </div>
             <!-- End Right Inputs -->
@@ -58,7 +79,7 @@
             <!-- Bottom Submit -->
             <div class="relative fullwidth col-xs-12">
                 <!-- Send Button -->
-                <button type="submit" id="submit" name="submit" class="form-btn semibold">Update</button> 
+                <button type="submit" id="submit" name="submit" class="form-btn semibold" href="{{ url('/admin/'. $p->stt) }}">Update</button> 
             </div><!-- End Bottom Submit -->
 
             <!-- Clear -->

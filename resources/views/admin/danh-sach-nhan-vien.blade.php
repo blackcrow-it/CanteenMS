@@ -21,7 +21,7 @@
             <td><a href="{{''. $p->stt}}">{{ $p->ten_nhan_vien }}</a></td>
             <td>
             <a href="{{ '' . $p->stt . '/edit'}}"><span class="glyphicon glyphicon-pencil">Edit</span></a>
-            <a href="{{ '' . $p->stt }}"><span class="glyphicon glyphicon-trash">Delete</span></a>
+            <a href="{{ '' . $p->stt.'/destroys' }}"><span class="glyphicon glyphicon-trash">Delete</span></a>
             </td>
             
         </tr>

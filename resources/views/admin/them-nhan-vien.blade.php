@@ -9,16 +9,29 @@
 @stop
 
 @section('content')
+<link rel="stylesheet" href="../../public/css/ahihi.css">
 
-    @if(isset($success))
-		<div class="alert alert-success" role="alert">{{ $success }}</div>
+<?php if(session()->has('success')){
+        echo '<div style="text-align: center">';
+        echo session()->get('success');
+        echo '</div>';
+    }?>
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
     @endif
+
     @if(isset($fail))
 		<div class="alert alert-danger" role="alert">{{ $fail }}</div>
     @endif
+    
 
-<html>
-<link rel="stylesheet" href="../../public/css/ahihi.css">
 <div class="inner contact">
     <!-- Form Area -->
     <div class="contact-form">
@@ -44,15 +57,24 @@
             <!-- End Left Inputs -->
 
             <!-- Right Inputs -->
-            <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+            <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
             <!-- tên nhân viên -->
             <input type="text" name="ten_nhan_vien" id="ten_nhan_vien" required="required" class="form" placeholder="Tên Nhân Viên"/>
             <!-- sex -->
-            <input type="text" name="gioi_tinh" id="gioi_tinh" required="required" class="form" placeholder="Giới tính" />
+            <select type="text" id="gioi_tinh" name="gioi_tinh" class="form">
+                <option selected> Nam...</option>
+                <option> Nữ...</option>
+            </select>
             <!-- Chức vụ -->
-            <input type="text" name="chuc_cu" id="chuc_cu" required="required" class="form" placeholder="Chức Vụ"/>
+            <select type="text" id="chuc_cu" name="chuc_cu" class="form">
+                <option selected> Nhân viên</option>
+                <option> Nhân viên văn phòng</option>
+            </select>
             <!-- kiểu làm -->
-            <input type="text" name="kieu_lam" id="kieu_lam" required="required" class="form" placeholder="Kiểu làm"/>
+            <select type="text" id="kieu_lam" name="kieu_lam" class="form">
+                <option selected> Full-time</option>
+                <option> Fart-time</option>
+            </select>
             <!-- ghi chú -->
             <textarea cols="30" rows="6" name="ghi_chu" id="ghi_chu" required="required" class="form" placeholder="Ghi chú"></textarea>
             </div>
@@ -78,7 +100,6 @@
 
     </div><!-- End Contact Form Area -->
 </div><!-- End Inner -->
-</html>
 
 @stop
 

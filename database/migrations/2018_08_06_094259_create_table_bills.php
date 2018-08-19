@@ -23,12 +23,14 @@ class CreateTableBills extends Migration
         Schema::create('product_output', function (Blueprint $table) {
             $table->increments('stt');
             $table->string('ma_hoa_don');
+            $table->unsignedInteger('ma_san_pham');
             $table->string('ten_san_pham');
             $table->string('ten_alias');
             $table->integer('so_luong_xuat');
             $table->integer('don_gia');
             $table->string('don_vi');
             $table->integer('thanh_tien');
+            $table->foreign('ma_san_pham')->references('ma_san_pham')->on('product_infomation')->onDelete('CASCADE');
             $table->foreign('ma_hoa_don')->references('ma_hoa_don')->on('bill_infomation')->onDelete('CASCADE');
         });
     }

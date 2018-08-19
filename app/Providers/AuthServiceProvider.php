@@ -25,18 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Gate::define('hoa-don', function ($user){
-            if ($user->role_id === 1 || $user->role_id === 2) {
-                return true;
-            }
-        });
-
-        Gate::define('thong-tin', function ($user){
-                return true;
-        });
-
-        Gate::define('quan-ly', function ($user){
-            if ($user->role_id === 1) {
+        Gate::define('admin', function ($user){
+            if ($user->name === 'Admin') {
                 return true;
             }
         });

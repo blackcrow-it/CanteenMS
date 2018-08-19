@@ -114,39 +114,35 @@ return [
             'url'  => 'admin/phieu-mua-hang',
             'icon_color' => 'red',
             'icon'       => 'cart-plus',
-            'can' => 'hoa-don'
         ],
         [
             'text'       => 'Danh sách hóa đơn',
             'url'  => 'admin/danh-sach-hoa-don',
             'icon_color' => 'yellow',
-            'icon'       => 'list-ol',
-            'can' => 'hoa-don'
+            'icon'       => 'list-ol'
         ],
         'THÔNG TIN TÀI KHOẢN',
         [
             'text' => 'Thông tin',
             'url'  => 'admin/thong-tin',
             'icon' => 'user',
-            'can' => 'thong-tin'
         ],
         [
             'text' => 'Thay đổi mật khẩu',
             'url'  => 'admin/thay-doi-mat-khau',
             'icon' => 'lock',
-            'can' => 'thong-tin'
         ],
         'QUẢN LÝ',
         [
             'text' => 'Sản phẩm',
             'url'  => 'admin/san-pham',
-            'can'  => 'quan-ly',
+            // 'can'  => 'admin',
             'icon' => 'product-hunt',
         ],
         [
             'text'        => 'Nhân viên',
             // 'url'         => 'admin/pages',
-            'can'         => 'quan-ly',
+            // 'can'         => 'admin',
             'icon'        => 'users',
             'label_color' => 'success',
             'submenu'  => [

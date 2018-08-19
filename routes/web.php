@@ -47,4 +47,4 @@ Route::get('/admin/{users_id}/edit','ProductController@edit');
 
 Route::post('/admin/{users_id}','ProductController@update');
 
-Route::get('/admin/{users_id}','ProductController@destroys');
+Route::get('/admin/{users_id}/destroys','ProductController@destroys');
