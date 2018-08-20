@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts/{id}', 'PostController@show');
 
+
 Route::get('/admin/san-pham', 'ProductManage@index');
 
 Route::post('/admin/san-pham/add',[
@@ -37,3 +38,10 @@ Route::get('/admin/danh-sach-san-pham', 'ProductManage@show');
 Route::get('/admin/edit/{alias}', 'ProductManage@getEdit');
 Route::post('/admin/edit', 'ProductManage@doEdit')->name('product.edit');
 Route::get('/admin/delete/{alias}', 'ProductManage@doDelete');
+
+Route::get('/admin/phieu-mua-hang', 'BillController@index');
+Route::post('/admin/phieu-mua-hang/add', [
+		'as' => 'addBill',
+		'uses' => 'BillController@create'
+	]);
+
