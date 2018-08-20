@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
       DB::table('product_infomation')->insert( [
         'ten_san_pham' => 'nước ngọt',
         'ten_nha_san_xuat' => 'pepsi',
-        'ten_alias' => 'ngot-nuoc-pepsi',
+        'ten_alias' => 'nuoc-ngot-pepsi',
         'don_gia' => 8000,
         'so_luong' => 100,
         'don_vi' => 'lon',

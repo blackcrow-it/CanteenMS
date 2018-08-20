@@ -55,6 +55,7 @@ class BillController extends Controller
         for ($i=0; $i < $count ; $i++) { 
             $billModel = new BillModel();
             $billModel->ten_san_pham = $name[$i];
+            $billModel->ten_nha_san_xuat = $producer[$i];
             $billModel->ten_alias = $alias[$i];
             $billModel->don_gia = $price[$i];
             $billModel->don_vi = $unit[$i];
@@ -62,6 +63,17 @@ class BillController extends Controller
             $billModel->thanh_tien = $amount[$i];
             $billModel->ma_hoa_don = $id_bill;
             $billModel->save();
+
+            $editQuantity = DB::table('product_infomation')
+            ->where('ten_alias', '=', $alias[$i])
+            ->first();
+            // $convertQuantity = ;
+
+            // $subQuantity = (int)$convertQuantity - (int);
+
+            $editedQuantity = DB::table('product_infomation')
+            ->where('ten_alias', '=', $alias[$i])
+            ->update(['so_luong' => $editQuantity->so_luong - $quantity[$i]]);
         }
 
 
@@ -87,7 +99,31 @@ class BillController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = DB::table('product_output')
+        ->where('ma_hoa_don', '=', $id)
+        ->get();
+
+        $bill = DB::table('bill_infomation')
+        ->where('ma_hoa_don', '=', $id)
+        ->first();
+
+        return view('show_bill')->with([
+            'index' => 1,
+            'data' => $data,
+            'bill' => $bill
+        ]);
+    }
+
+
+    public function list()
+    {
+        $data = DB::table('bill_infomation')
+        ->get();
+        return view('list_bill')->with([
+            'index' => 1,
+            'data' => $data,
+            'route_name' => 'listBill'
+        ]);
     }
 
     /**
