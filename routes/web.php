@@ -34,6 +34,6 @@ Route::post('/admin/san-pham/add',[
 		// 	]);
 
 Route::get('/admin/danh-sach-san-pham', 'ProductManage@show');
-Route::get('/admin/edit/{id}', 'ProductManage@getEdit');
+Route::get('/admin/edit/{alias}', 'ProductManage@getEdit');
 Route::post('/admin/edit', 'ProductManage@doEdit')->name('product.edit');
-Route::get('/admin/delete/{id}', 'ProductManage@doDelete');
+Route::get('/admin/delete/{alias}', 'ProductManage@doDelete');

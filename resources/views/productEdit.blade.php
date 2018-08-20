@@ -13,7 +13,7 @@
 	<div class="col-md-10">
 		<form action="{{ route('product.edit') }}" method="POST">
 		{{ csrf_field() }}
-		<input type="hidden" name="id" id="id" value="{{$data->ma_san_pham}}">
+		<input type="text" name="alias" id="alias" value="{{$data->ten_alias}}">
 		<div class="form-group row">
 			<label for="staticEmail" class="col-sm-2 col-form-label">Tên sản phẩm</label>
 			<div class="col-sm-10">
@@ -29,7 +29,8 @@
 		<div class="form-group row">
 			<label for="staticEmail" class="col-sm-2 col-form-label">Số lượng</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="quantity" name="quantity" value="{{$data->so_luong}}">
+				<input type="text" class="form-control" id="quantity" name="quantity" value="{{$data->so_luong}}" style="display: none;">
+				<input type="text" class="form-control" id="quantity_update" name="quantity_update" value="0">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -45,12 +46,7 @@
 				<input type="number" class="form-control" id="price" name="price" value="{{$data->don_gia}}">
 			</div>
 		</div>
-		<div class="form-group row">
-			<label for="staticEmail" class="col-sm-2 col-form-label">Ngày nhập:</label>
-			<div class="col-sm-10">
-				<input type="date" class="form-control" id="date" name="date" value="{{$data->ngay_nhap}}">
-			</div>
-		</div>
+
 		<div class="form-group row">
 			<label for="staticEmail" class="col-sm-2 col-form-label">Ghi chú</label>
 			<div class="col-sm-10">

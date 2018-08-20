@@ -32,8 +32,9 @@ class ProductManage extends Controller
     	$quantity = $req->quantity;
     	$unit = $req->unit;
     	$price = $req->price;
-    	$date = $req->date;
     	$note = $req->note;
+        $date    = new \DateTime();
+        $my_date = $date->format('Y-m-d H:i:s');
     	$alias = str_slug($name.'-'.$producer);
 		
 
@@ -53,56 +54,84 @@ class ProductManage extends Controller
     		'ten_san_pham' => $name,
     		'ten_alias' => $alias,
     		'so_luong_nhap' => $quantity,
-    		'ngay_nhap' => $date,
+    		'ngay_nhap' => $my_date,
     		'ghi_chu' => $note,
     	]);
     return redirect('/admin/danh-sach-san-pham');
     }
 
-    public function getEdit($id){
+    public function getEdit($alias){
     	$product = DB::table('product_infomation')
-    				->join('product_input','product_input.stt','=','product_infomation.ma_san_pham')
-    	->where('ma_san_pham',$id)->first();
-    	return view('productEdit',['data'=>$product]);
+    	->where('ten_alias',$alias)->first();
+        $product_input = DB::table('product_input')
+        ->where('ten_alias',$alias)->first();
+    	return view('productEdit',['data'=>$product, 'data_input'=>$product_input]);
     }
 
     public function doEdit(Request $request){
-    	$id = $request->id;
+    	$alias = $request->alias;
     	$name = $request->name;
-    	// die($name);
     	$producer = $request->producer;
-    	$quantity = $request->quantity;
+        $quantity_update = $request->quantity_update;
+    	$quantity = $request->quantity + $quantity_update;
     	$unit = $request->unit;
     	$price = $request->price;
     	$date = $request->date;
     	$note = $request->note;
+        $date    = new \DateTime();
+        $my_date = $date->format('Y-m-d H:i:s');
+        $alias_edit = str_slug($name.'-'.$producer);
 
-    	$product = ProductInformation::where('ma_san_pham',$id)->first();
-    	$product->ten_san_pham=$name;
-    	$product->ten_nha_san_xuat=$producer;
-    	$product->don_gia=$price;
-    	$product->so_luong=$quantity;
-    	$product->ghi_chu=$note;
-    	$product->don_vi=$unit;
-    	$product->save();
+        $product = DB::table('product_infomation')
+        ->where('ten_alias', $alias)
+        ->update([
+            'ten_san_pham' => $name,
+            'ten_nha_san_xuat' => $producer,
+            'ten_alias' => $alias_edit,
+            'don_gia' => $price,
+            'don_vi' => $unit,
+            'so_luong' => $quantity,
+            'ghi_chu' => $note,
+        ]);
 
-    	$product1 = ProductInput::where('stt',$id)->first();
-    	if (!is_null($product1) ) {
-    		$product1->ten_san_pham=$name;
-	    	$product1->ngay_nhap=$date;
-	    	$product1->so_luong_nhap=$quantity;
-	    	$product1->ghi_chu=$note;
-	    	$product1->save();
-    	}
+        $product_input = DB::table('product_input')
+        ->where('ten_alias', $alias)
+        ->insert([
+            'ten_san_pham' => $name,
+            'ten_alias' => $alias_edit,
+            'so_luong_nhap' => $quantity_update,
+            'ghi_chu' => $note,
+            'ngay_nhap' => $my_date
+        ]);
+
+    	// $product = ProductInformation::where('ten_alias',$alias)->first();
+    	// $product->ten_san_pham=$name;
+    	// $product->ten_nha_san_xuat=$producer;
+    	// $product->don_gia=$price;
+    	// $product->so_luong=$quantity;
+    	// $product->ghi_chu=$note;
+    	// $product->don_vi=$unit;
+     //    $product->ten_alias=$alias_edit;
+    	// $product->save();
+
+    	// $product1 = ProductInput::where('ten_alias',$alias)->first();
+    	// if (!is_null($product1) ) {
+    	// 	$product1->ten_san_pham=$name;
+	    // 	$product1->ngay_nhap=$my_date;
+     //        $product1->ten_alias=$alias_edit;
+	    // 	$product1->so_luong_nhap=$quantity;
+	    // 	$product1->ghi_chu=$note;
+	    // 	$product1->save();
+    	// }
 		
 
     	return redirect('/admin/danh-sach-san-pham');
     }
 
-    public function doDelete($id){
+    public function doDelete($alias){
     	$product = DB::table('product_infomation')
-    	->where('ma_san_pham',$id)->delete();
-    	$product_id =DB::table('product_input')
-    	->where('stt',$id)->delete();
+    	->where('ten_alias',$alias)->delete();
+    	$product_alias =DB::table('product_input')
+    	->where('ten_alias',$alias)->delete();
     }
 }

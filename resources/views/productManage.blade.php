@@ -33,8 +33,8 @@
 						<td>{{ $item->don_vi }}</td>
 						<td>{{ $item->so_luong }}</td>
 						<td>
-							<a href="{{url('/admin/edit',['id'=>$item->ma_san_pham])}}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span>Sửa</a>
-							<a href="{{url('/admin/delete',['id'=>$item->ma_san_pham])}}" class="btn btn-danger" id="confirm_delete" data-name={{$item->ten_san_pham}}><span class="glyphicon glyphicon-trash"></span> Xoá</a>
+							<a href="{{url('/admin/edit',['ten_alias'=>$item->ten_alias])}}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span>Sửa</a>
+							<a href="{{url('/admin/delete',['ten_alias'=>$item->ten_alias])}}" class="btn btn-danger" id="confirm_delete" data-name={{$item->ten_san_pham}}><span class="glyphicon glyphicon-trash"></span> Xoá</a>
 						</td>
 					</tr>
 					@endforeach
