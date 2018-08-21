@@ -26,11 +26,9 @@ class CreateTableProducts extends Migration
 
         Schema::create('product_input', function (Blueprint $table) {
             $table->increments('stt');
-            $table->unsignedInteger('ma_san_pham');
             $table->string('ten_san_pham');
             $table->string('ten_alias');
             $table->integer('so_luong_nhap');
-            $table->foreign('ma_san_pham')->references('ma_san_pham')->on('product_infomation')->onDelete('CASCADE');
             $table->dateTime('ngay_nhap');
             $table->text('ghi_chu');
         });

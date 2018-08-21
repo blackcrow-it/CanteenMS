@@ -138,10 +138,20 @@ return [
         ],
         'QUẢN LÝ',
         [
-            'text' => 'Sản phẩm',
-            'url'  => 'admin/san-pham',
-            'can'  => 'quan-ly',
-            'icon' => 'product-hunt',
+            'text'        => 'Sản phẩm',
+            'can'         => 'quan-ly',
+            'icon'        => 'product-hunt',
+            'label_color' => 'success',
+            'submenu'  => [
+                [
+                    'text' => 'Thêm sản phẩm',
+                    'url'  => 'admin/san-pham',
+                ],
+                [
+                    'text' => 'Quản lý sản phẩm',
+                    'url'  => 'admin/danh-sach-san-pham',
+                ],
+            ],
         ],
         [
             'text'        => 'Nhân viên',
