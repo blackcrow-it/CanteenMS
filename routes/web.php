@@ -26,3 +26,9 @@ Route::post('/admin/phieu-mua-hang/add', [
 		'as' => 'addBill',
 		'uses' => 'BillController@create'
 	]);
+Route::get('admin/danh-sach-hoa-don', [
+		'as' => 'listBill',
+		'uses' => 'BillController@list'
+	]);
+
+Route::get('admin/danh-sach-hoa-don/{id}', 'BillController@show');

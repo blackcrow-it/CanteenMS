@@ -25,6 +25,7 @@ class CreateTableBills extends Migration
             $table->increments('stt');
             $table->string('ma_hoa_don');
             $table->string('ten_san_pham');
+            $table->string('ten_nha_san_xuat');
             $table->string('ten_alias');
             $table->integer('so_luong_xuat');
             $table->integer('don_gia');

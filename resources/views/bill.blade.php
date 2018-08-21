@@ -2,15 +2,25 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Phiếu mua hàng')
 
 @section('content_header')
 <h1>Phiếu mua hàng </h1>
 @stop
 
 @section('content')
+<style type="text/css">
+	.table-wrapper-scroll-y {
+  display: block;
+  max-height: 250px;
+  height: 250px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+</style>
 <form action="{{ route('addBill') }}" method="POST">
 	<input class="form-control" id="bill" type="text" name="bill" style="width: 20%; display: none;" readonly>
+	<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
 	<div class="panel">
 		<div class="panel-body">
 			<table class="table table-hover" id="table-product">
@@ -24,7 +34,7 @@
 						<th>Số Lượng</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="myTable">
 					@foreach($data as $item)
 					<tr id="line_{{ $item->ma_san_pham }}" style="cursor: pointer;">
 						<td>{{ $index++ }}</td>
@@ -56,9 +66,17 @@
 						<th></th>
 					</tr>
 				</thead>
-				<tbody class="product" style="max-height: 100px; overflow-y: scroll;">
+				<tbody class="product">
 					{{ csrf_field() }}
-					<tr></tr>
+					<tr id="display_none">
+						<td><input class="form-control" type="text" readonly></td>
+						<td><input class="form-control" type="text" readonly></td>
+						<td><input class="form-control price" type=""  readonly></td>
+						<td><input class="form-control" type="" readonly></td>
+						<td><input  style="width: 70px" type="number" class="form-control quantity" max="'+quantity+'" min="1" readonly ></td>
+						<td><input class="form-control amount" type="text" readonly></td>
+						<td class="remove"><button class="btn btn-danger">Xóa</button></td>
+					</tr>
 				</tbody>
 				<tfoot>
 					<th></th>
@@ -67,7 +85,7 @@
 					<th>Số loại sản phẩm</th>
 					<th><input style="width: 70px" class="form-control products" type="text" name="products"></th>
 					<th>Tổng tiền (VND):</th>
-					<th><input style="width: 100px" class="form-control total" type="text" name="total" value="0"></th>
+					<th><input style="width: 100px" class="form-control total" type="text" name="total"></th>
 					<th></th>
 				</tfoot>
 			</table>
@@ -83,6 +101,7 @@
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @stop
 
 @section('js')
@@ -95,7 +114,13 @@
 	$(document).ready(function(){
 	    $("#bill").val(makeid());
 	    $("input[name=products]").val(0);
-	    
+	    $("input[name=total]").val(0);
+	    $("#myInput").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#myTable tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
 	});
 	
 	$('#table-product tbody tr').click(function(){
@@ -107,6 +132,8 @@
 		var quantity = $(this).find('td:eq(5)').text();
 		var alias = convertToSlug(name+'-'+producer);
 		var array = [name, producer];
+		var total = 0;
+		$('#display_none').css('display', 'none');
 		if(!isItemInArray(arrays, array)) {		
 			arrays.push([name, producer]);
 			$('.product').append('<tr>'+
@@ -114,18 +141,18 @@
 				'<td><input class="form-control" type="text" name="producer[]" value="'+producer+'" readonly>'+'</td>'+
 				'<td><input class="form-control price" type="" name="price[]" value="'+price+'" readonly>'+'</td>'+
 				'<td><input class="form-control" type="" name="unit[]" value="'+unit+'" readonly>'+'</td>'+
-				'<td><input  style="width: 70px" type="number" class="form-control quantity" name="quantity[]" id="qtt'+no+'" max="'+quantity+'" min="0" value="0" >'+'</td>'+
+				'<td><input  style="width: 70px" type="number" class="form-control quantity" name="quantity[]" id="qtt'+no+'" max="'+quantity+'" min="1" value="1" >'+'</td>'+
 				'<td style="display:none;"><input class="form-control" type="text" name="alias[]" value="'+alias+'">'+'</td>'+
-				'<td><input class="form-control amount" type="text" name="amount[]" value="0" readonly></td>'+
+				'<td><input class="form-control amount" type="text" name="amount[]" value="'+price+'" readonly></td>'+
 				'<td class="remove"><button class="btn btn-danger">Xóa</button></td>'+
 				'</tr>');
 			var products = $('.products').val();
 			products++;
 			$('.products').val(products);
-			console.log('Đã chọn sản phẩm '+name);
-			console.log(arrays);
+			swal("Đã chọn sản phẩm " +name, "", "success");
+			$("input[name=total]").val(parseInt($("input[name=total]").val())+parseInt(price));
 		} else {
-			console.log('Sản phẩm đã chọn');
+			swal("Sản phẩm đã được chọn", "", "warning");
 		}
 		// console.log(price*quantity);
 		});
@@ -161,7 +188,7 @@
 		            x = i;
 		        }
 	    }
-		console.log('Đã xóa sản phẩm '+name+' '+producer);
+		swal('Đã xóa sản phẩm '+name+' '+producer, "", "success");
 		arrays.splice(x,1);
 		console.log(arrays);
 	});  
