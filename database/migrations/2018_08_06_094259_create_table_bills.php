@@ -14,7 +14,8 @@ class CreateTableBills extends Migration
     public function up()
     {
         Schema::create('bill_infomation', function (Blueprint $table) {
-            $table->string('ma_hoa_don')->primary();
+            $table->increments('stt');
+            $table->string('ma_hoa_don')->unique();
             $table->integer('so_loai_san_pham');
             $table->dateTime('ngay_ban');
             $table->integer('tong_tien');
@@ -24,11 +25,13 @@ class CreateTableBills extends Migration
             $table->increments('stt');
             $table->string('ma_hoa_don');
             $table->string('ten_san_pham');
+            $table->string('ten_nha_san_xuat');
             $table->string('ten_alias');
             $table->integer('so_luong_xuat');
             $table->integer('don_gia');
             $table->string('don_vi');
             $table->integer('thanh_tien');
+            $table->timestamps();
             $table->foreign('ma_hoa_don')->references('ma_hoa_don')->on('bill_infomation')->onDelete('CASCADE');
         });
     }
