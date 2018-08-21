@@ -83,7 +83,7 @@
 					<th></th>
 					<th></th>
 					<th>Số loại sản phẩm</th>
-					<th><input style="width: 70px" class="form-control products" type="text" name="products"></th>
+					<th><input style="width: 70px" class="form-control products" type="text" name="products" readonly></th>
 					<th>Tổng tiền (VND):</th>
 					<th><input style="width: 100px" class="form-control total" type="text" name="total"></th>
 					<th></th>
