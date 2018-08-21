@@ -20,7 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts/{id}', 'PostController@show');
-
 Route::get('/admin/thong-tin', 'InfoController@index');
 Route::get('/admin/thay-doi-mat-khau','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
@@ -31,11 +30,6 @@ Route::post('/admin/san-pham/add',[
 	'as'   => 'addProduct',
 	'uses' => 'ProductManage@create'
 ]);
-
-// Route::post('/change-password/change', [
-		// 		'as'   => 'changePasswordRes',
-		// 		'uses' => 'ChangePwdController@UpdateInfo'
-		// 	]);
 
 Route::get('/admin/danh-sach-san-pham', 'ProductManage@show');
 Route::get('/admin/edit/{alias}', 'ProductManage@getEdit');
