@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Info;
 
@@ -14,8 +16,13 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $infos = Info::all()->toArray();
-        return view('info.index',compact('infos'));
+        $user = Auth::user()->email;
+        $data = DB::table('user_infomation')
+        ->where('ten_tai_khoan',$user)
+        ->first();
+        return view('info.show', [
+          'data' => $data
+        ]);
     }
 
     /**

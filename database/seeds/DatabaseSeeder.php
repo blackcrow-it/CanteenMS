@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+      $date = new \DateTime();
+      $my_date = $date->format('Y-m-d H:i:s');
         // $this->call(UsersTableSeeder::class);
     	DB::table('roles')->insert([
             'title' => 'admin'
@@ -64,5 +66,23 @@ class DatabaseSeeder extends Seeder
         'ghi_chu' => 'không'
       ]);
       
+      DB::table('user_infomation')->insert( [
+        'ten_tai_khoan' => 'admin@localtion.dev',
+        'path_hinh_anh' => 'images/avatar.jpg',
+        'ten_nhan_vien' => 'admin',
+        'ngay_sinh' => '1999-08-11',
+        'gioi_tinh' => 'nam',
+        'so_cmt' => '071071417',
+        'sdt' => '01633333549',
+        'dia_chi' => 'Hanoi',
+        'email' => 'admin@gmail.com',
+        'chuc_vu' => 'Admin',
+        'chuc_vu_alias' => 'admin',
+        'ngay_vao' => $my_date,
+        'kieu_lam' => 'full-time',
+        'so_ngay_nghi' => 0,
+        'luong' => 20000000,
+        'ghi_chu' => 'Khong'
+      ]);
     }
 }
