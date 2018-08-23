@@ -48,3 +48,16 @@ Route::get('admin/danh-sach-hoa-don', [
 	]);
 
 Route::get('admin/danh-sach-hoa-don/{id}', 'BillController@show');
+
+//....
+Route::get('/admin/them-nhan-vien', 'EmployeeController@index');
+
+Route::post('/admin/them-nhan-vien/add',[
+	'as'   => 'addEmployee',
+	'uses' => 'EmployeeController@create'
+]);
+Route::get('/admin/danh-sach-nhan-vien', 'EmployeeController@show');
+Route::get('/admin/{ten_tai_khoan}', 'EmployeeController@show_detail');
+Route::get('/admin/Employee/edit/{ten_tai_khoan}', 'EmployeeController@getEdit');
+Route::post('/admin/Employee/edit', 'EmployeeController@doEdit')->name('Employee.edit');
+Route::get('/admin/Employee/delete/{ten_tai_khoan}', 'EmployeeController@doDelete');

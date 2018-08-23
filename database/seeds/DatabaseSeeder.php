@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         ]);
   		DB::table('users')->insert(	[
   			'name' => 'admin',
-  			'email' => 'admin@localtion.dev',
+        'email' => 'admin@localtion.dev',
+        'role_id' => 1,
   			'password' => '$2y$10$sM2rCd3lSioNOO1kmRNloeaZAV2r5g37UjHe5/n8fvjc9HfhfteTO'
   		]);
       DB::table('product_infomation')->insert( [
