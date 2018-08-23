@@ -26,7 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     {
 
         Gate::define('hoa-don', function ($user){
-            if ($user->role_id === 1 || $user->role_id === 2) {
+            if ($user->role_id === 1 || $user->role_id === 3) {
+                return true;
+            }
+        });
+
+        Gate::define('danh-sach-hoa-don', function ($user){
+            if ($user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3) {
                 return true;
             }
         });
@@ -36,7 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('quan-ly', function ($user){
-            if ($user->role_id === 1) {
+            if ($user->role_id === 2 || $user->role_id === 1) {
                 return true;
             }
         });

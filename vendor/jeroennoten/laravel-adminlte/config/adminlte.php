@@ -121,7 +121,7 @@ return [
             'url'  => 'admin/danh-sach-hoa-don',
             'icon_color' => 'yellow',
             'icon'       => 'list-ol',
-            'can' => 'hoa-don'
+            'can' => 'danh-sach-hoa-don'
         ],
         'THÔNG TIN TÀI KHOẢN',
         [

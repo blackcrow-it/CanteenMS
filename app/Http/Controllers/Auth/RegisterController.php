@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -63,9 +64,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $date = new \DateTime();
+        $my_date = $date->format('Y-m-d H:i:s');
+        $info = DB::table('user_infomation')
+        ->insert([
+            'ten_tai_khoan' => $data['email'],
+            'ten_nhan_vien' => $data['name'],
+            'created_at' => $my_date,
+            'updated_at' => $my_date,
+            'chuc_vu' => 'Người dùng',
+            'chuc_vu_alias' => 'nguoi_dung'
+        ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role_id' => 4,
             'password' => Hash::make($data['password']),
         ]);
     }

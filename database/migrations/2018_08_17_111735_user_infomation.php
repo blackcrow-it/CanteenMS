@@ -32,7 +32,7 @@ class UserInfomation extends Migration
         $table->integer('luong')->nullable();
         $table->text('ghi_chu')->nullable();
         $table->timestamps();
-        $table->foreign('ten_tai_khoan')->references('email')->on('users');
+        // $table->foreign('ten_tai_khoan')->references('email')->on('users');
       });
     }
 

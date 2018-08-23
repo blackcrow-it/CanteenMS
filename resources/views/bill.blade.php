@@ -75,7 +75,7 @@
 						<td><input class="form-control" type="" readonly></td>
 						<td><input  style="width: 70px" type="number" class="form-control quantity" max="'+quantity+'" min="1" readonly ></td>
 						<td><input class="form-control amount" type="text" readonly></td>
-						<td class="remove"><button class="btn btn-danger">Xóa</button></td>
+						<td></td>
 					</tr>
 				</tbody>
 				<tfoot>
@@ -85,7 +85,7 @@
 					<th>Số loại sản phẩm</th>
 					<th><input style="width: 70px" class="form-control products" type="text" name="products" readonly></th>
 					<th>Tổng tiền (VND):</th>
-					<th><input style="width: 100px" class="form-control total" type="text" name="total"></th>
+					<th><input style="width: 100px" class="form-control total" type="text" name="total" readonly=""></th>
 					<th></th>
 				</tfoot>
 			</table>
@@ -100,7 +100,7 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @stop
 

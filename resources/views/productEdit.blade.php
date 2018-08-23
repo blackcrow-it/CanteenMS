@@ -10,10 +10,12 @@
 
 @section('content')
 <div class="panel">
+	<div class="panel-body">
+		
 	<div class="col-md-10">
 		<form action="{{ route('product.edit') }}" method="POST">
 		{{ csrf_field() }}
-		<input type="text" name="alias" id="alias" value="{{$data->ten_alias}}">
+		<input type="text" name="alias" id="alias" value="{{$data->ten_alias}}" style="display: none;">
 		<div class="form-group row">
 			<label for="staticEmail" class="col-sm-2 col-form-label">Tên sản phẩm</label>
 			<div class="col-sm-10">
@@ -58,6 +60,7 @@
 		<button class="btn btn-success" type="submit">Sửa</button>
 
 	</form>
+	</div>
 	</div>
 	
 </div>
