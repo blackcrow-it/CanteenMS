@@ -20,31 +20,29 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts/{id}', 'PostController@show');
+Route::get('/admin/thong-tin', 'InfoController@index');
+Route::get('/admin/thay-doi-mat-khau','HomeController@showChangePasswordForm');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 
-//..........
 
-// Route::get('admin/them-nhan-vien','themnhanvienController@show');
 
-// Route::get('admin/danh-sach-nhan-vien','danhsachnhanvienController@show');
 
-//Route::get('admin/thong-tin-nhan-vien','thongtinnhanvienController@show');
 
-//.............
+//.....
+Route::get('/admin/them-nhan-vien', 'EmployeeManage@create');
 
-Route::resource('admin', 'ProductController', ['only' => [
-    'create', 'store', 'edit'
-]]);
+Route::post('/admin/them-nhan-vien/add',[
+	'as'   => 'addProduct',
+	'uses' => 'EmployeeManage@store'
+]);
 
-Route::get('admin/danh-sach-nhan-vien','ProductController@index');
+Route::get('/admin/danh-sach-nhan-vien', 'EmployeeManage@show');
+Route::get('/admin/edit/{chuc_cu_alias}', 'EmployeeManage@getEdit');
+Route::get('/admin/{chuc_cu_alias}', 'EmployeeManage@show_detail');
+Route::post('/admin/edit', 'EmployeeManage@doEdit')->name('product.edit');
+Route::get('/admin/delete/{chuc_cu_alias}', 'EmployeeManage@doDelete');
 
-Route::get('/admin/them-nhan-vien','ProductController@create');
 
-Route::post('/admin','ProductController@store');
+//....
 
-Route::get('/admin/{users_id}','ProductController@show_nv');
 
-Route::get('/admin/{users_id}/edit','ProductController@edit');
-
-Route::post('/admin/{users_id}','ProductController@update');
-
-Route::get('/admin/{users_id}/destroys','ProductController@destroys');
