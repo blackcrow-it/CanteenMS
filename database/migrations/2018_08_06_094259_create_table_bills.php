@@ -24,7 +24,6 @@ class CreateTableBills extends Migration
         Schema::create('product_output', function (Blueprint $table) {
             $table->increments('stt');
             $table->string('ma_hoa_don');
-            $table->unsignedInteger('ma_san_pham');
             $table->string('ten_san_pham');
             $table->string('ten_nha_san_xuat');
             $table->string('ten_alias');
@@ -32,11 +31,7 @@ class CreateTableBills extends Migration
             $table->integer('don_gia');
             $table->string('don_vi');
             $table->integer('thanh_tien');
-<<<<<<< HEAD
             $table->timestamps();
-=======
-            $table->foreign('ma_san_pham')->references('ma_san_pham')->on('product_infomation')->onDelete('CASCADE');
->>>>>>> c019d63c5171e9eeed3740d5eafcc5083b127a76
             $table->foreign('ma_hoa_don')->references('ma_hoa_don')->on('bill_infomation')->onDelete('CASCADE');
         });
     }
