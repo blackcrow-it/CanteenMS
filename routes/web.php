@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts/{id}', 'PostController@show');
 Route::get('/admin/thong-tin', 'InfoController@index');
+Route::post('/admin/thong-tin/edit/img', 'InfoController@editImage')->name('editImage');
+Route::post('/admin/thong-tin/edit/text/email', 'InfoController@editEmail');
+Route::post('/admin/thong-tin/edit/text/sdt', 'InfoController@editNumberPhone');
+Route::post('/admin/thong-tin/edit/text/dia-chi', 'InfoController@editAddress');
 Route::get('/admin/thay-doi-mat-khau','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 

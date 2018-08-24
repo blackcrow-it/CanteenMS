@@ -25,6 +25,42 @@ class InfoController extends Controller
         ]);
     }
 
+    public function editEmail(Request $request)
+    {
+        $data = DB::table('user_infomation')
+        ->where('ten_tai_khoan', $request->ten_tai_khoan)
+        ->update([
+            'email' => $request->email
+        ]);
+    }
+
+    public function editImage(Request $request)
+    {
+        $data = DB::table('user_infomation')
+        ->where('ten_tai_khoan', $request->email)
+        ->update([
+            'path_hinh_anh' => $request->path_hinh_anh
+        ]);
+    }
+
+    public function editNumberPhone(Request $request)
+    {
+        $data = DB::table('user_infomation')
+        ->where('ten_tai_khoan', $request->ten_tai_khoan)
+        ->update([
+            'sdt' => $request->sdt
+        ]);
+    }
+
+    public function editAddress(Request $request)
+    {
+        $data = DB::table('user_infomation')
+        ->where('ten_tai_khoan', $request->ten_tai_khoan)
+        ->update([
+            'dia_chi' => $request->dia_chi
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
