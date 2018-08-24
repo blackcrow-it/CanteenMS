@@ -149,10 +149,22 @@
 			var products = $('.products').val();
 			products++;
 			$('.products').val(products);
-			swal("Đã chọn sản phẩm " +name, "", "success");
+			swal({
+			  title: "Đã chọn sản phẩm " +name,
+			  icon: "success",
+			  timer: 1000,
+			  button:false,
+              
+			});
 			$("input[name=total]").val(parseInt($("input[name=total]").val())+parseInt(price));
 		} else {
-			swal("Sản phẩm đã được chọn", "", "warning");
+			swal({
+			  title: "Sản phẩm đã được chọn ",
+			  icon: "warning",
+			  timer: 1000,
+			  button:false,
+              
+			});
 		}
 		// console.log(price*quantity);
 		});
@@ -188,7 +200,13 @@
 		            x = i;
 		        }
 	    }
-		swal('Đã xóa sản phẩm '+name+' '+producer, "", "success");
+		swal({
+			  title: "Đã xóa sản phẩm " +name+' '+producer ,
+			  icon: "success",
+			  timer: 1000,
+			  button:false,
+              
+			});
 		arrays.splice(x,1);
 		console.log(arrays);
 	});  
