@@ -35,10 +35,10 @@ Route::post('/admin/san-pham/add',[
 	'uses' => 'ProductManage@create'
 ])->middleware(['can:quan-ly']);
 
-Route::get('/admin/danh-sach-san-pham', 'ProductManage@show')->middleware(['can:quan_ly']);
-Route::get('/admin/edit/{alias}', 'ProductManage@getEdit')->middleware(['can:quan_ly']);
-Route::post('/admin/edit', 'ProductManage@doEdit')->name('product.edit')->middleware(['can:quan_ly']);
-Route::get('/admin/delete/{alias}', 'ProductManage@doDelete')->middleware(['can:quan_ly']);
+Route::get('/admin/danh-sach-san-pham', 'ProductManage@show')->middleware(['can:quan-ly']);
+Route::get('/admin/edit/{alias}', 'ProductManage@getEdit')->middleware(['can:quan-ly']);
+Route::post('/admin/edit', 'ProductManage@doEdit')->name('product.edit')->middleware(['can:quan-ly']);
+Route::get('/admin/delete/{alias}', 'ProductManage@doDelete')->middleware(['can:quan-ly']);
 
 Route::get('/admin/phieu-mua-hang', 'BillController@index')->middleware(['can:hoa-don']);
 Route::post('/admin/phieu-mua-hang/add', [
@@ -54,14 +54,14 @@ Route::get('admin/danh-sach-hoa-don', [
 Route::get('admin/danh-sach-hoa-don/{id}', 'BillController@show')->middleware(['can:danh-sach-hoa-don']);
 
 //....
-Route::get('/admin/them-nhan-vien', 'EmployeeController@index')->middleware(['can:quan_ly']);
+Route::get('/admin/them-nhan-vien', 'EmployeeController@index')->middleware(['can:quan-ly']);
 
 Route::post('/admin/them-nhan-vien/add',[
 	'as'   => 'addEmployee',
 	'uses' => 'EmployeeController@create'
-])->middleware(['can:quan_ly']);
-Route::get('/admin/danh-sach-nhan-vien', 'EmployeeController@show')->middleware(['can:quan_ly']);
-Route::get('/admin/{ten_tai_khoan}', 'EmployeeController@show_detail')->middleware(['can:quan_ly']);
-Route::get('/admin/Employee/edit/{ten_tai_khoan}', 'EmployeeController@getEdit')->middleware(['can:quan_ly']);
-Route::post('/admin/Employee/edit', 'EmployeeController@doEdit')->name('Employee.edit')->middleware(['can:quan_ly']);
-Route::get('/admin/Employee/delete/{ten_tai_khoan}', 'EmployeeController@doDelete')->middleware(['can:quan_ly']);
+])->middleware(['can:quan-ly']);
+Route::get('/admin/danh-sach-nhan-vien', 'EmployeeController@show')->middleware(['can:quan-ly']);
+Route::get('/admin/{ten_tai_khoan}', 'EmployeeController@show_detail')->middleware(['can:quan-ly']);
+Route::get('/admin/Employee/edit/{ten_tai_khoan}', 'EmployeeController@getEdit')->middleware(['can:quan-ly']);
+Route::post('/admin/Employee/edit', 'EmployeeController@doEdit')->name('Employee.edit')->middleware(['can:quan-ly']);
+Route::get('/admin/Employee/delete/{ten_tai_khoan}', 'EmployeeController@doDelete')->middleware(['can:quan-ly']);
