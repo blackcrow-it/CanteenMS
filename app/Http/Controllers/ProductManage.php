@@ -133,5 +133,6 @@ class ProductManage extends Controller
     	->where('ten_alias',$alias)->delete();
     	$product_alias =DB::table('product_input')
     	->where('ten_alias',$alias)->delete();
+        return redirect("admin/danh-sach-san-pham")->with('status','Cập nhật thành công');
     }
 }
