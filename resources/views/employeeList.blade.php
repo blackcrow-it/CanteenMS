@@ -2,7 +2,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'danh-sach-nhan-vien')
+@section('title', 'Danh sách nhân viên')
 
 @section('content_header')
     <h1>Danh sach nhân viên</h1>
