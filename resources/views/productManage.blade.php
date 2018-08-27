@@ -2,7 +2,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Quản lý sản phẩm')
 
 @section('content_header')
     <h1>	Sản Phẩm</h1>
@@ -27,7 +27,7 @@
 				<tbody id="myTable">
 					@foreach($data as $item)
 					<tr>
-						<td>{{ $item->ma_san_pham }}</td>
+						<td>{{ $index++ }}</td>
 						<td id="name">{{ $item->ten_san_pham }}</td>
 						<td>{{ $item->ten_nha_san_xuat }}</td>
 						<td>{{ $item->don_gia }}</td>
