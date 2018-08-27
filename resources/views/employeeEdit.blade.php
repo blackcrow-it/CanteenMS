@@ -2,7 +2,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'edit')
+@section('title', 'Sửa thông tin')
 
 @section('content_header')
 <h1>chỉnh sửa thông tin nhân viên</h1>

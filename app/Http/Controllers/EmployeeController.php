@@ -16,6 +16,7 @@ class EmployeeController extends Controller
     }
     public function create(Request $req)
     {
+
         $ten_tai_khoan = $req->ten_tai_khoan;
         $path_hinh_anh = $req->path_hinh_anh;
     	$ngay_sinh = $req->ngay_sinh;
@@ -34,7 +35,10 @@ class EmployeeController extends Controller
 		
 
         $data = DB::table('user_infomation')
-        ->where('ten_tai_khoan', $ten_tai_khoan)
+        ->where([
+            ['ten_tai_khoan', $ten_tai_khoan],
+            ['so_cmt' , '='  , NULL]
+                ])
     	->update([
     		'ngay_sinh' => $ngay_sinh,
             'gioi_tinh' => $gioi_tinh,
