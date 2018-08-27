@@ -50,7 +50,8 @@
 		</div>
 	</div>
 
-	<h3>Sản phẩm đã chọn</h3>
+	<h3 style="color: white;
+	text-align: center;">Sản phẩm đã chọn</h3>
 
 	<div class="panel">
 		<div class="panel-body" style="overflow-y:auto;">
