@@ -78,6 +78,7 @@ class BillController extends Controller
 
 
         return redirect('/admin/phieu-mua-hang');
+        
     } 
 
     /**
