@@ -2,7 +2,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Thêm sản phẩm')
 
 @section('content_header')
 <h1>Sản Phẩm</h1>

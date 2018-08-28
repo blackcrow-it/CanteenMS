@@ -22,7 +22,7 @@ class ProductManage extends Controller
     {
     	$data = DB::table('product_infomation')->paginate(40);
         $data->setPath("");
-    	return view('productManage',['data'=>$data]);
+    	return view('productManage',['data'=>$data, 'index'=>1]);
     }
 
     public function create(Request $req)
@@ -133,5 +133,6 @@ class ProductManage extends Controller
     	->where('ten_alias',$alias)->delete();
     	$product_alias =DB::table('product_input')
     	->where('ten_alias',$alias)->delete();
+        return redirect("admin/danh-sach-san-pham")->with('status','Cập nhật thành công');
     }
 }

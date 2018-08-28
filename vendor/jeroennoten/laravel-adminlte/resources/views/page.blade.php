@@ -14,6 +14,17 @@
 ][config('adminlte.layout')] : '') . (config('adminlte.collapse_sidebar') ? ' sidebar-collapse ' : ''))
 
 @section('body')
+<style>
+    .content-wrapper{
+        background: linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url("{{ asset('images/bg-banner.jpg')}}");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .content-header{
+        color: white;
+        text-align: center;
+    }
+</style>
     <div class="wrapper">
 
         <!-- Main Header -->
