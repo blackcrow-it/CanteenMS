@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'HÓA ĐƠN',
+        // 'HÓA ĐƠN',
         [
             'text'       => 'Phiếu mua hàng',
             'url'  => 'admin/phieu-mua-hang',
@@ -123,7 +123,7 @@ return [
             'icon'       => 'list-ol',
             'can' => 'danh-sach-hoa-don'
         ],
-        'THÔNG TIN TÀI KHOẢN',
+        // 'THÔNG TIN TÀI KHOẢN',
         [
             'text' => 'Thông tin',
             'url'  => 'admin/thong-tin',
@@ -136,7 +136,7 @@ return [
             'icon' => 'lock',
             'can' => 'thong-tin'
         ],
-        'QUẢN LÝ',
+        // 'QUẢN LÝ',
         [
             'text'        => 'Sản phẩm',
             'can'         => 'quan-ly',

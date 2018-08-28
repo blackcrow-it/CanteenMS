@@ -5,7 +5,6 @@
 @section('title', 'Phiếu mua hàng')
 
 @section('content_header')
-<h1>Phiếu mua hàng </h1>
 @stop
 
 @section('content')
@@ -20,41 +19,78 @@
 </style>
 <form id="contact" action="{{ route('addBill') }}" method="POST" >
 	<input class="form-control" id="bill" type="text" name="bill" style="width: 20%; display: none;" readonly>
-	<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
-	<div class="panel">
-		<div class="panel-body">
-			<table class="table table-hover" id="table-product">
-				<thead>
-					<tr>
-						<th>STT</th>
-						<th>Tên sản phẩm</th>
-						<th>Tên nhà sản xuất</th>
-						<th>Đơn giá</th>
-						<th>Đơn vị</th>
-						<th>Số Lượng</th>
-					</tr>
-				</thead>
-				<tbody id="myTable">
-					@foreach($data as $item)
-					<tr id="line_{{ $item->ma_san_pham }}" style="cursor: pointer;">
-						<td>{{ $index++ }}</td>
-						<td>{{ $item->ten_san_pham }}</td>
-						<td>{{ $item->ten_nha_san_xuat }}</td>
-						<td>{{ $item->don_gia }}</td>
-						<td>{{ $item->don_vi }}</td>
-						<td>{{ $item->so_luong }}</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="box box-danger" data-widget="box-widget">
+				<div class="box-header with-border">
+						<div class="box-title header-title">Sản phẩm</div>
+						<div class="box-tools pull-right"><input type="text" style=" border: none;" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control"></div>
+				</div>
+				<div class="box-body">
+					<table class="table table-hover" id="table-product">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Tên sản phẩm</th>
+								<th>Tên nhà sản xuất</th>
+								<th>Đơn giá</th>
+								<th>Đơn vị</th>
+								<th>Số Lượng</th>
+							</tr>
+						</thead>
+						<tbody id="myTable">
+							@foreach($data as $item)
+							<tr id="line_{{ $item->ma_san_pham }}" style="cursor: pointer;">
+								<td>{{ $index++ }}</td>
+								<td>{{ $item->ten_san_pham }}</td>
+								<td>{{ $item->ten_nha_san_xuat }}</td>
+								<td>{{ $item->don_gia }}</td>
+								<td>{{ $item->don_vi }}</td>
+								<td>{{ $item->so_luong }}</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
+
+		<!---------------------------------------------------------------------------------------------------------------------->
+		{{-- <div class="col-sm-4">
+			<div class="box box-danger" data-widget="box-widget">
+				<div class="box-header">
+					<h3 class="box-title">Thông tin khách hàng</h3>
+				</div>
+				<div class="box-body">
+					<label for="" class="col-form-label">ID</label>
+					<div class="">
+						<input type="text" class="form-control" id="id_customer" name="id_customer" required>
+					</div>
+					<label for="" class="col-form-label">Tên Khách Hàng</label>
+					<div class="">
+						<input type="text" class="form-control" id="name_customer" name="name_customer" required>
+					</div>
+					<label for="" class="col-form-label">Số Điện Thoại</label>
+					<div class="">
+						<input type="text" class="form-control" id="phone_customer" name="phone_customer" required>
+					</div>
+					<label for="" class="col-form-label">Email (nếu có)</label>
+					<div class="">
+						<input type="text" class="form-control" id="email_customer" name="email_customer" required>
+					</div>
+				</div>
+			</div>
+		</div> --}}
+		<!---------------------------------------------------------------------------------------------------------------------->
+		
 	</div>
-
-	<h3 style="color: white;
-	text-align: center;">Sản phẩm đã chọn</h3>
-
-	<div class="panel">
-		<div class="panel-body" style="overflow-y:auto;">
+	
+<div class=""></div>
+	<div class="box box-success">
+		<div class="box-header with-border">
+			<h3 class="box-title">Phiếu mua hàng</h3>
+		</div>
+		<div class="box-body">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -80,7 +116,7 @@
 					</tr>
 				</tbody>
 				<tfoot>
-					<th></th>
+					<th><button type="submit" class="btn btn-success add-bill">Lưu</button></th>
 					<th></th>
 					<th></th>
 					<th>Số loại sản phẩm</th>
@@ -90,13 +126,13 @@
 					<th></th>
 				</tfoot>
 			</table>
-			<button type="submit" class="btn btn-success add-bill"  >Lưu</button>
 		</div>
 	</div>
 	<div>
 
 	</div>
 </form>
+<div id=""></div>
 @stop
 
 @section('css')
@@ -258,5 +294,23 @@
 
 
 </script>
-
+<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script>
+	$(document).ready(function() {
+		// $('#table-product').DataTable({
+		// 	"filter":false,
+		// 	"length":false,
+		// 	"info":false,
+		// 	"paging":false
+		// });
+			$('#table-product').DataTable( {
+			"scrollY":        "200px",
+			"scrollCollapse": true,
+			"paging":         false,
+			"info":false,
+			"filter":	false
+		} );
+	} );
+</script>
 @stop

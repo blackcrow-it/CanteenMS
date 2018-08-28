@@ -20,10 +20,9 @@
         background-size: cover;
         background-attachment: fixed;
     }
-    .content-header{
+    /* h1{
         color: white;
-        text-align: center;
-    }
+    } */
 </style>
     <div class="wrapper">
 

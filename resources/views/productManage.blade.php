@@ -5,11 +5,17 @@
 @section('title', 'Quản lý sản phẩm')
 
 @section('content_header')
-    <h1>	Sản Phẩm</h1>
+   
 @stop
 
 @section('content')
-<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
+<div class="box box-success" data-widget="box-widget">
+		<div class="box-header">
+			<h3 class="box-title">Sản phẩm</h3>
+			<div class="box-tools pull-right">
+				<input type="text" style=" border: none;" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
+			</div>
+		</div>
     <div class="panel">
     	<div class="panel-body">
 			<table class="table table-hover">
@@ -43,6 +49,7 @@
 					@endforeach
 				</tbody>
 			</table>
+			{{ $data->links() }}
 		</div>
     </div>
 @stop
