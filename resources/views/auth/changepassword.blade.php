@@ -3,7 +3,11 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
-
+<style>
+    .panel {
+        opacity: 1;
+    }
+</style>
 @section('content_header')
 
 @stop

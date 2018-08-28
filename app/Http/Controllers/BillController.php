@@ -118,7 +118,7 @@ class BillController extends Controller
     public function list()
     {
         $data = DB::table('bill_infomation')
-        ->get();
+        ->paginate(7);
         return view('list_bill')->with([
             'index' => 1,
             'data' => $data,

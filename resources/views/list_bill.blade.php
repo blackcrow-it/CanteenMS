@@ -5,7 +5,6 @@
 @section('title', 'Danh sách hóa đơn')
 
 @section('content_header')
-    <h1>Danh sách hóa đơn</h1>
 @stop
 
 @section('content')
@@ -17,9 +16,15 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 </style>
-	<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
-    <div class="panel">
-		<div class="panel-body table-wrapper-scroll-y">
+	
+    <div class="box box-success" data-widget="box-widget">
+		<div class="box-header">
+			<h3 class="box-title">Danh sách hóa đơn</h3>
+			<div class="box-tools pull-right">
+				<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
+			</div>
+		</div>
+		<div class="box-body">
 			<table class="table table-hover" id="table-product">
 				<thead>
 					<tr>
@@ -42,6 +47,7 @@
 					@endforeach
 				</tbody>
 			</table>
+			{{ $data->links() }}
 		</div>
 	</div>
 @stop
