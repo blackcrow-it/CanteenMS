@@ -64,6 +64,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role_id = 4;
         $date = new \DateTime();
         $my_date = $date->format('Y-m-d H:i:s');
         $info = DB::table('user_infomation')
@@ -72,13 +73,13 @@ class RegisterController extends Controller
             'ten_nhan_vien' => $data['name'],
             'created_at' => $my_date,
             'updated_at' => $my_date,
+            'path_hinh_anh' => '../images/avatar.jpg',
             'chuc_vu' => 'Người dùng',
             'chuc_vu_alias' => 'nguoi_dung'
         ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role_id' => 4,
             'password' => Hash::make($data['password']),
         ]);
     }

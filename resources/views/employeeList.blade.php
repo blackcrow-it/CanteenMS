@@ -38,7 +38,7 @@
 					@foreach($data as $item)
 					<tr id="line_{{ $item->ten_nhan_vien }}" style="cursor: pointer;" class='clickable-row' >
 						<td>{{ $item->stt }}</td>
-						<td id="name"><a href="{{ '' . $item->stt}}">{{ $item->ten_nhan_vien }}</a></td>
+						<td id="name"><a href="user/{{$item->stt}}">{{ $item->ten_nhan_vien }}</a></td>
 						<td>{{ $item->gioi_tinh }}</td>
 						<td>{{ $item->sdt }}</td>
 						<td>{{ $item->kieu_lam }}</td>

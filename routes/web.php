@@ -61,7 +61,9 @@ Route::post('/admin/them-nhan-vien/add',[
 	'uses' => 'EmployeeController@create'
 ])->middleware(['can:quan-ly']);
 Route::get('/admin/danh-sach-nhan-vien', 'EmployeeController@show')->middleware(['can:quan-ly']);
-Route::get('/admin/{ten_tai_khoan}', 'EmployeeController@show_detail')->middleware(['can:quan-ly']);
+Route::get('/admin/user/{ten_tai_khoan}', 'EmployeeController@show_detail')->middleware(['can:quan-ly']);
 Route::get('/admin/Employee/edit/{ten_tai_khoan}', 'EmployeeController@getEdit')->middleware(['can:quan-ly']);
 Route::post('/admin/Employee/edit', 'EmployeeController@doEdit')->name('Employee.edit')->middleware(['can:quan-ly']);
 Route::get('/admin/Employee/delete/{ten_tai_khoan}', 'EmployeeController@doDelete')->middleware(['can:quan-ly']);
+
+Route::get('/admin/thong-ke-bieu-do', 'ChartController@show');

@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
       
       DB::table('user_infomation')->insert( [
         'ten_tai_khoan' => 'admin@localtion.dev',
-        'path_hinh_anh' => 'images/avatar.jpg',
+        'path_hinh_anh' => '../images/avatar.jpg',
         'ten_nhan_vien' => 'admin',
         'ngay_sinh' => '1999-08-11',
         'gioi_tinh' => 'nam',
