@@ -170,6 +170,12 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Thống kê',
+            'url'  => 'admin/thong-ke-bieu-do',
+            'icon' => 'pie-chart',
+            'can' => 'quan-ly'
+        ],
 
         // [
         //     'text'       => 'Information',
