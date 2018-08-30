@@ -14,14 +14,16 @@
   max-height: 350px;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+
+	
 }
 </style>
 	
     <div class="box box-success" data-widget="box-widget">
 		<div class="box-header">
-			<h3 class="box-title">Danh sách hóa đơn</h3>
+			<h3 class="box-title header-title">Danh sách hóa đơn</h3>
 			<div class="box-tools pull-right">
-				<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
+				<input type="text" style=" border: none;" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
 			</div>
 		</div>
 		<div class="box-body">

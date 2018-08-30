@@ -17,7 +17,7 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 </style>
-<form action="{{ route('addBill') }}" method="POST">
+<form id="contact" action="{{ route('addBill') }}" method="POST" >
 	<input class="form-control" id="bill" type="text" name="bill" style="width: 20%; display: none;" readonly>
 	<div class="row">
 		<div class="col-sm-8">
@@ -54,6 +54,8 @@
 				</div>
 			</div>
 		</div>
+
+		<!---------------------------------------------------------------------------------------------------------------------->
 		{{-- <div class="col-sm-4">
 			<div class="box box-danger" data-widget="box-widget">
 				<div class="box-header">
@@ -79,6 +81,8 @@
 				</div>
 			</div>
 		</div> --}}
+		<!---------------------------------------------------------------------------------------------------------------------->
+		
 	</div>
 	
 <div class=""></div>
@@ -102,11 +106,11 @@
 				<tbody class="product">
 					{{ csrf_field() }}
 					<tr id="display_none">
-						<td><input class="form-control" type="text" readonly></td>
+						<td><input class="form-control " type="text"  readonly ></td>
 						<td><input class="form-control" type="text" readonly></td>
 						<td><input class="form-control price" type=""  readonly></td>
 						<td><input class="form-control" type="" readonly></td>
-						<td><input  style="width: 70px" type="number" class="form-control quantity" max="'+quantity+'" min="1" readonly ></td>
+						<td><input  style="width: 70px" type="number"  class="form-control quantity" max="'+quantity+'" min="1" readonly  ></td>
 						<td><input class="form-control amount" type="text" readonly></td>
 						<td></td>
 					</tr>
@@ -116,9 +120,9 @@
 					<th></th>
 					<th></th>
 					<th>Số loại sản phẩm</th>
-					<th><input style="width: 70px" class="form-control products" type="text" name="products" readonly></th>
+					<th><input style="width: 70px" class="form-control products" type="text" name="products"  readonly></th>
 					<th>Tổng tiền (VND):</th>
-					<th><input style="width: 100px" class="form-control total" type="text" name="total" readonly=""></th>
+					<th><input style="width: 100px" class="form-control total" type="text" name="total"  readonly=""></th>
 					<th></th>
 				</tfoot>
 			</table>
@@ -135,6 +139,7 @@
 <link rel="stylesheet" href="/css/admin_custom.css">
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @stop
 
 @section('js')
@@ -170,10 +175,10 @@
 		if(!isItemInArray(arrays, array)) {		
 			arrays.push([name, producer]);
 			$('.product').append('<tr>'+
-				'<td><input class="form-control" type="text" name="name[]" value="'+name+'" readonly>'+'</td>'+
+				'<td><input class="form-control " type="text" name="name[]" value="'+name+'"  readonly>'+'</td>'+
 				'<td><input class="form-control" type="text" name="producer[]" value="'+producer+'" readonly>'+'</td>'+
 				'<td><input class="form-control price" type="" name="price[]" value="'+price+'" readonly>'+'</td>'+
-				'<td><input class="form-control" type="" name="unit[]" value="'+unit+'" readonly>'+'</td>'+
+				'<td><input class="form-control " type="" name="unit[]" value="'+unit+'" readonly>'+'</td>'+
 				'<td><input  style="width: 70px" type="number" class="form-control quantity" name="quantity[]" id="qtt'+no+'" max="'+quantity+'" min="1" value="1" >'+'</td>'+
 				'<td style="display:none;"><input class="form-control" type="text" name="alias[]" value="'+alias+'">'+'</td>'+
 				'<td><input class="form-control amount" type="text" name="amount[]" value="'+price+'" readonly></td>'+
@@ -270,6 +275,24 @@
     }
     return false;
 }
+
+ 
+ 
+       $('.add-bill').click(function(){
+       	if ($.trim($('.products').val()) == 0) {
+       		swal({
+			  title: "Chưa chọn sản phẩm" ,
+			  icon: "error",
+         });
+            return false;
+       	}
+		 $('.contact').submit();
+		 
+		       })
+        
+        
+
+
 </script>
 <script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>

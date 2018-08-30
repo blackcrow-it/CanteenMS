@@ -20,9 +20,10 @@ class ProductManage extends Controller
 
     public function show()
     {
-    	$data = DB::table('product_infomation')->paginate(40);
+    	$data = DB::table('product_infomation')->paginate(9);
         $data->setPath("");
-    	return view('productManage',['data'=>$data, 'index'=>1]);
+		return view('productManage',['data'=>$data, 'index'=>1]);
+		
     }
 
     public function create(Request $req)

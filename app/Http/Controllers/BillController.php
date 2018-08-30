@@ -78,6 +78,7 @@ class BillController extends Controller
 
 
         return redirect('/admin/phieu-mua-hang');
+        
     } 
 
     /**
@@ -118,7 +119,7 @@ class BillController extends Controller
     public function list()
     {
         $data = DB::table('bill_infomation')
-        ->paginate(7);
+        ->paginate(12);
         return view('list_bill')->with([
             'index' => 1,
             'data' => $data,
