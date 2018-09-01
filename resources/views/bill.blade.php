@@ -21,12 +21,15 @@
 </style>
 <style>
 #img1{
-	width: 90%;
+	width: 100%;
 	border: 1px  solid ;
 }
 #aaa{
 	height: 265px;
 }
+
+
+
 </style>
 <form id="contact" action="{{ route('addBill') }}" method="POST" >
 	<input class="form-control" id="bill" type="text" name="bill" style="width: 20%; display: none;" readonly>
@@ -78,10 +81,10 @@
 					</div>
 				</div>	
 				<div class="box-body" id="aaa">
-					<div class="col-sm-5">
+					<div class="col-xs-4 pull-left">
 						<div><img src="{{$dataUser->path_hinh_anh}}" alt="" id="img1"></div>
 					</div>
-					<div class="col-sm-7" >
+					<div class="col-xs-6 pull-right" id="tt" >
 						<input id="user" name="user" value="{{ $dataUser->ten_tai_khoan }}" style="width: 20%; display: none;" readonly>
 						
 						<b>Tên nhân viên:</b> {{ $dataUser->ten_nhan_vien }}<br><br>
