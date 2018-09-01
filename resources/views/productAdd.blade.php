@@ -5,12 +5,13 @@
 @section('title', 'Thêm sản phẩm')
 
 @section('content_header')
-<h1>Sản Phẩm</h1>
+
 @stop
 
 @section('content')
-<div class="panel">
-	<div class="panel-body">
+<div class="box box-success" data-widget="box-widget">
+	<div class="box-header with-border">
+		<h3 class="box-title header-title">Thêm sản phẩm</h3></br></br></br>
 
 	<div class="col-md-10">
 		<form action="{{ route('addProduct') }}" method="POST">

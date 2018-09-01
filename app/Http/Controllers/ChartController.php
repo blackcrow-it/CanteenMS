@@ -12,7 +12,9 @@ class ChartController extends Controller
     {
         $date    = new \DateTime();
         $my_date = $date->format('Y-m-d');
+        $my_month = $date->format('Y-m');
         $week = $date->format('W');
+        $month = $date->format('m');
         $year = $date->format('Y');
         $date1 = date( "Y-m-d", strtotime($year."W".$week."1") ); 
         $date2 = date( "Y-m-d", strtotime($year."W".$week."2") );
@@ -21,9 +23,22 @@ class ChartController extends Controller
         $date5 = date( "Y-m-d", strtotime($year."W".$week."5") ); 
         $date6 = date( "Y-m-d", strtotime($year."W".$week."6") );  
         $date7 = date( "Y-m-d", strtotime($year."W".$week."7") );
+
+        
+        
         $sumForDay = DB::table('product_output')
         ->select(DB::raw('sum(so_luong_xuat) as tong_so_luong_xuat, ten_san_pham, ten_nha_san_xuat'))
         ->where('created_at', 'like', $my_date.'%')
+        ->groupBy('ten_san_pham', 'ten_nha_san_xuat')
+        ->get();
+        $sumForMonth = DB::table('product_output')
+        ->select(DB::raw('sum(so_luong_xuat) as tong_so_luong_xuat, ten_san_pham, ten_nha_san_xuat'))
+        ->where('created_at', 'like', $my_month.'%')
+        ->groupBy('ten_san_pham', 'ten_nha_san_xuat')
+        ->get();
+        $sumForYear = DB::table('product_output')
+        ->select(DB::raw('sum(so_luong_xuat) as tong_so_luong_xuat, ten_san_pham, ten_nha_san_xuat'))
+        ->where('created_at', 'like', $year.'%')
         ->groupBy('ten_san_pham', 'ten_nha_san_xuat')
         ->get();
         $sumForWeek = DB::table('product_output')
@@ -37,11 +52,11 @@ class ChartController extends Controller
         ->orWhere('created_at', 'like', $date7.'%')
         ->groupBy('ten_san_pham', 'ten_nha_san_xuat')
         ->get();
-        // dd($sumForWeek);
-        // dd($currentDate, $date, $agoDate);
         return view('chart')->with([
             'sumForDay' => $sumForDay,
-            'sumForWeek' => $sumForWeek
+            'sumForWeek' => $sumForWeek,
+            'sumForMonth' => $sumForMonth,
+            'sumforYear' => $sumForYear
         ]);
     }
 }

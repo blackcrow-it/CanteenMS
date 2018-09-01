@@ -5,13 +5,17 @@
 @section('title', 'Sửa thông tin')
 
 @section('content_header')
-<h1>chỉnh sửa thông tin nhân viên</h1>
+
 @stop
 
 @section('content')
-<div class="panel">
+<div class="panel box box-danger">
     <div class="panel-body"> 
-	
+			<div class="box-header with-border">
+					<div class="box-title header-title">chỉnh sửa thông tin nhân viên</div>
+					
+			</div>
+			<br>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>

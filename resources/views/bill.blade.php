@@ -15,6 +15,17 @@
   height: 250px;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  
+}
+</style>
+<style>
+#img1{
+	width: 90%;
+	border: 1px  solid ;
+}
+#aaa{
+	height: 265px;
 }
 </style>
 <form id="contact" action="{{ route('addBill') }}" method="POST" >
@@ -56,31 +67,30 @@
 		</div>
 
 		<!---------------------------------------------------------------------------------------------------------------------->
-		{{-- <div class="col-sm-4">
-			<div class="box box-danger" data-widget="box-widget">
-				<div class="box-header">
-					<h3 class="box-title">Thông tin khách hàng</h3>
-				</div>
-				<div class="box-body">
-					<label for="" class="col-form-label">ID</label>
-					<div class="">
-						<input type="text" class="form-control" id="id_customer" name="id_customer" required>
+		<div class="col-sm-4">
+			<div class="box box-warning" data-widget="box-widget">
+				<div class="box-header with-border">
+					<div class="box-title">Thông tin nhân viên</div>
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 					</div>
-					<label for="" class="col-form-label">Tên Khách Hàng</label>
-					<div class="">
-						<input type="text" class="form-control" id="name_customer" name="name_customer" required>
+				</div>	
+				<div class="box-body" id="aaa">
+					<div class="col-sm-5">
+						<div><img src="{{$dataUser->path_hinh_anh}}" alt="" id="img1"></div>
 					</div>
-					<label for="" class="col-form-label">Số Điện Thoại</label>
-					<div class="">
-						<input type="text" class="form-control" id="phone_customer" name="phone_customer" required>
-					</div>
-					<label for="" class="col-form-label">Email (nếu có)</label>
-					<div class="">
-						<input type="text" class="form-control" id="email_customer" name="email_customer" required>
+					<div class="col-sm-7" >
+						<input id="user" name="user" value="{{ $dataUser->ten_tai_khoan }}" style="width: 20%; display: none;" readonly>
+						
+						<b>Tên nhân viên:</b> {{ $dataUser->ten_nhan_vien }}<br><br>
+						<b>Chức vụ:</b> {{ $dataUser->chuc_vu }}<br><br>
+						<b>Giới tính:</b> {{ $dataUser->gioi_tinh }}<br><br>
 					</div>
 				</div>
 			</div>
-		</div> --}}
+		</div>
 		<!---------------------------------------------------------------------------------------------------------------------->
 		
 	</div>
