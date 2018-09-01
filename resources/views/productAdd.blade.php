@@ -9,10 +9,13 @@
 @stop
 
 @section('content')
-<div class="box box-success" data-widget="box-widget">
-	<div class="box-header with-border">
-		<h3 class="box-title header-title">Thêm sản phẩm</h3></br></br></br>
-
+<div class="panel box box-danger">
+	<div class="panel-body ">
+		<div class="box-header with-border">
+			<div class="box-title header-title">Thêm sản phẩm</div>
+			
+	</div>
+<br>
 	<div class="col-md-10">
 		<form action="{{ route('addProduct') }}" method="POST">
 		{{ csrf_field() }}
