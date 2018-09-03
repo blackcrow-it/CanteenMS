@@ -12,10 +12,10 @@
 
 @stop
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-1">
-            <div class="panel panel-default">
+<div class="container ">
+    <div class="row ">
+        <div class="col-md-8 col-md-offset-1 ">
+            <div class="panel panel-default box box-danger">
                 <div class="panel-heading" align="center" > <h3>Đổi mật khẩu</h3></div>
 
                 <div class="panel-body">

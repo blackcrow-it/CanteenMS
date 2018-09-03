@@ -36,6 +36,7 @@
 		</div>
 	</div>
 </div>
+<!------------------------------------------------------------------------------------------------------------------>
 <div class="col-sm-6">
     <div class="box box-success" data-widget="box-widget">
 		<div class="box-header">
@@ -51,10 +52,11 @@
 		</div>
 	</div>
 </div>
+<!------------------------------------------------------------------------------------------------------------------>
 <div class="col-sm-6">
 	<div class="box box-success" data-widget="box-widget">
 		<div class="box-header">
-			<h3 class="box-title header-title">Thống kê theo tuần</h3>
+			<h3 class="box-title header-title">Thống kê theo tháng</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 				</button>
@@ -62,14 +64,16 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<canvas id="myChartForWeek" width="400" height="400"></canvas>
+			<canvas id="myChartForMonth" width="400" height="400"></canvas>
 		</div>
 	</div>
 </div>
+
+<!------------------------------------------------------------------------------------------------------------------>
 <div class="col-sm-6">
 	<div class="box box-success" data-widget="box-widget">
 		<div class="box-header">
-			<h3 class="box-title header-title">Thống kê theo tuần</h3>
+			<h3 class="box-title header-title">Thống kê theo năm</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 				</button>
@@ -77,10 +81,11 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<canvas id="myChartForWeek" width="400" height="400"></canvas>
+			<canvas id="myChartForYear" width="400" height="400"></canvas>
 		</div>
 	</div>
 </div>
+
 @stop
 
 @section('css')
@@ -98,14 +103,16 @@
 			    });
 			  });
 		});
-    </script>
+	</script>
+	<!------------------------------------------------------------------------------------------------------------------>
     <script type="text/javascript">
     	jQuery(document).ready(function($) {
 		    $(".clickable-row").click(function() {
 		        window.location = $(this).data("href");
 		    });
 		});
-    </script>
+	</script>
+	<!------------------------------------------------------------------------------------------------------------------>
 	<script type="text/javascript">
 		var ctx = document.getElementById("myChartForDay");
 		Chart.defaults.scale.ticks.beginAtZero = true;
@@ -137,6 +144,7 @@
 			}
 		});
 	</script>
+	<!------------------------------------------------------------------------------------------------------------------>
 	<script type="text/javascript">
 		var ctx = document.getElementById("myChartForWeek");
 		Chart.defaults.scale.ticks.beginAtZero = true;
@@ -150,6 +158,70 @@
 			data: {
 				labels: [
 					@foreach($sumForWeek as $item)
+						"{{$item->ten_san_pham}} {{$item->ten_nha_san_xuat}}",
+					@endforeach
+				],
+				datasets: [{
+					label: 'Ponits',
+					data: myData,
+					backgroundColor: palette('tol', myData.length).map(function(hex) {
+						return '#' + hex;
+					}),
+				}]
+			},
+			options: {
+				animation: {
+					animateScale:true
+				}
+			}
+		});
+	</script>
+	<!------------------------------------------------------------------------------------------------------------------>
+	<script type="text/javascript">
+		var ctx = document.getElementById("myChartForMonth");
+		Chart.defaults.scale.ticks.beginAtZero = true;
+		var myData =  [ 
+						@foreach($sumForMonth as $item)
+							{{$item->tong_so_luong_xuat}},
+						@endforeach
+					];
+		var myChart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: [
+					@foreach($sumForMonth as $item)
+						"{{$item->ten_san_pham}} {{$item->ten_nha_san_xuat}}",
+					@endforeach
+				],
+				datasets: [{
+					label: 'Ponits',
+					data: myData,
+					backgroundColor: palette('tol', myData.length).map(function(hex) {
+						return '#' + hex;
+					}),
+				}]
+			},
+			options: {
+				animation: {
+					animateScale:true
+				}
+			}
+		});
+	</script>
+	<!------------------------------------------------------------------------------------------------------------------>
+	<script type="text/javascript">
+		var ctx = document.getElementById("myChartForYear");
+		Chart.defaults.scale.ticks.beginAtZero = true;
+		var myData =  [ 
+						@foreach($sumforYear as $item)
+							{{$item->tong_so_luong_xuat}},
+						@endforeach
+					];
+		var myChart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: [
+					@foreach($sumforYear as $item)
 						"{{$item->ten_san_pham}} {{$item->ten_nha_san_xuat}}",
 					@endforeach
 				],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\BillModel;
 
 class BillController extends Controller
@@ -17,11 +18,18 @@ class BillController extends Controller
     public function index()
     {
         $data = DB::table('product_infomation')->get();
+        $user = Auth::user()->email;
+        $dataUser = DB::table('user_infomation')
+        ->where('ten_tai_khoan',$user)
+        ->first();
         return view('bill')->with([
             'data' => $data,
+            'dataUser' => $dataUser,
             'index' => 1,
             'total' => 0
         ]);
+
+
     }
 
     /**
@@ -40,6 +48,7 @@ class BillController extends Controller
         $count = count($name);
         $alias = $req->alias;
         $id_bill = $req->bill;
+        $user = $req->user;
         $total_products = $req->products;
         $date = new \DateTime();
         $my_date = $date->format('Y-m-d H:i:s');
@@ -49,7 +58,8 @@ class BillController extends Controller
             'ma_hoa_don' => $id_bill,
             'so_loai_san_pham' => $total_products,
             'ngay_ban' => $my_date,
-            'tong_tien' => $total
+            'tong_tien' => $total,
+            'nhan_vien' => $user
         ]);
 
         for ($i=0; $i < $count ; $i++) { 
@@ -61,6 +71,7 @@ class BillController extends Controller
             $billModel->don_vi = $unit[$i];
             $billModel->so_luong_xuat = $quantity[$i];
             $billModel->thanh_tien = $amount[$i];
+            $billModel->nhan_vien = $user;
             $billModel->ma_hoa_don = $id_bill;
             $billModel->save();
 

@@ -5,11 +5,15 @@
 @section('title', 'Chi tiết')
 
 @section('content_header')
-    <h1>Hoá Đơn: {{ $bill->ma_hoa_don }}</h1>
+   
 @stop
 
 @section('content')
-	<div class="panel">
+<div class="box box-danger" data-widget="box-widget">
+		<div class="box-header with-border">
+				<div class="box-title header-title"> <h3>Hoá Đơn: {{ $bill->ma_hoa_don }}</h3></div>
+				
+		</div>
 		<div class="panel-heading">
 			<h5 style="float: right;">Ngày bán {{ $bill->ngay_ban}}</h5>
 		</div>

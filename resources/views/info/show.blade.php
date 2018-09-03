@@ -26,7 +26,7 @@
 }
 </style>
 <div class="col-md-10 col-md-offset-1">
-    <div class="panel panel-default">
+    <div class="panel panel-default box box-success">
         <div class="panel-heading" style="text-align: center;">
             <h1>Thông tin tài khoản</h1>
         </div>

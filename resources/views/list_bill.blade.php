@@ -20,7 +20,7 @@
 </style>
 	
     <div class="box box-success" data-widget="box-widget">
-		<div class="box-header">
+		<div class="box-header with-border">
 			<h3 class="box-title header-title">Danh sách hóa đơn</h3>
 			<div class="box-tools pull-right">
 				<input type="text" style=" border: none;" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
@@ -35,6 +35,7 @@
 						<th>Số loại sản phẩm</th>
 						<th>Ngày bán</th>
 						<th>Tổng tiền</th>
+						<th>Nhân viên</th>
 					</tr>
 				</thead>
 				<tbody id="myTable">
@@ -45,6 +46,7 @@
 						<td>{{ $item->so_loai_san_pham }}</td>
 						<td>{{ $item->ngay_ban }}</td>
 						<td>{{ $item->tong_tien }}</td>
+					    <td>{{ $item->nhan_vien }}</td>
 					</tr>
 					@endforeach
 				</tbody>

@@ -15,12 +15,28 @@
   height: 250px;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  
 }
+</style>
+<style>
+#img1{
+	border:5px solid #eee;
+    
+	
+}
+
+#aaa{
+	height: 265px;
+}
+
+
+
 </style>
 <form id="contact" action="{{ route('addBill') }}" method="POST" >
 	<input class="form-control" id="bill" type="text" name="bill" style="width: 20%; display: none;" readonly>
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-sm-9">
 			<div class="box box-danger" data-widget="box-widget">
 				<div class="box-header with-border">
 						<div class="box-title header-title">Sản phẩm</div>
@@ -56,31 +72,35 @@
 		</div>
 
 		<!---------------------------------------------------------------------------------------------------------------------->
-		{{-- <div class="col-sm-4">
-			<div class="box box-danger" data-widget="box-widget">
-				<div class="box-header">
-					<h3 class="box-title">Thông tin khách hàng</h3>
-				</div>
-				<div class="box-body">
-					<label for="" class="col-form-label">ID</label>
-					<div class="">
-						<input type="text" class="form-control" id="id_customer" name="id_customer" required>
+		<div class="col-sm-3">
+			<div class="box box-warning" data-widget="box-widget">
+				<div class="box-header with-border">
+					<div class="box-title">Nhân viên bán hàng</div>
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 					</div>
-					<label for="" class="col-form-label">Tên Khách Hàng</label>
-					<div class="">
-						<input type="text" class="form-control" id="name_customer" name="name_customer" required>
+				</div>	
+				<div class="box-body" id="aaa">
+						<center>	
+					<div class="span2 ">
+						<div><img src="{{$dataUser->path_hinh_anh}}" alt="" id="img1" width="140px" height="140px"  class=" img-circle "></div>
 					</div>
-					<label for="" class="col-form-label">Số Điện Thoại</label>
-					<div class="">
-						<input type="text" class="form-control" id="phone_customer" name="phone_customer" required>
-					</div>
-					<label for="" class="col-form-label">Email (nếu có)</label>
-					<div class="">
-						<input type="text" class="form-control" id="email_customer" name="email_customer" required>
+						</center>
+					<div class="span4 " id="tt" >
+						<input id="user" name="user" value="{{ $dataUser->ten_tai_khoan }}" style="width: 20%; display: none;" readonly>
+						<center>
+						<h4><b> {{ $dataUser->ten_nhan_vien }}</b></h4>
+						</center>
+						
+						<b>Chức vụ: &nbsp; </b> {{ $dataUser->chuc_vu }} <br>
+						<b>Ngày sinh: &nbsp; </b>{{ $dataUser->ngay_sinh }} <br>
+						<b>Giới tính: &nbsp; </b> {{ $dataUser->gioi_tinh }}
 					</div>
 				</div>
 			</div>
-		</div> --}}
+		</div>
 		<!---------------------------------------------------------------------------------------------------------------------->
 		
 	</div>
@@ -89,6 +109,11 @@
 	<div class="box box-success">
 		<div class="box-header with-border">
 			<h3 class="box-title">Phiếu mua hàng</h3>
+			<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+					</button>
+					
+				</div>
 		</div>
 		<div class="box-body">
 			<table class="table table-hover">
@@ -108,7 +133,7 @@
 					<tr id="display_none">
 						<td><input class="form-control " type="text"  readonly ></td>
 						<td><input class="form-control" type="text" readonly></td>
-						<td><input class="form-control price" type=""  readonly></td>
+						<td><input class="form-control price" type=""   readonly></td>
 						<td><input class="form-control" type="" readonly></td>
 						<td><input  style="width: 70px" type="number"  class="form-control quantity" max="'+quantity+'" min="1" readonly  ></td>
 						<td><input class="form-control amount" type="text" readonly></td>
@@ -179,7 +204,7 @@
 				'<td><input class="form-control" type="text" name="producer[]" value="'+producer+'" readonly>'+'</td>'+
 				'<td><input class="form-control price" type="" name="price[]" value="'+price+'" readonly>'+'</td>'+
 				'<td><input class="form-control " type="" name="unit[]" value="'+unit+'" readonly>'+'</td>'+
-				'<td><input  style="width: 70px" type="number" class="form-control quantity" name="quantity[]" id="qtt'+no+'" max="'+quantity+'" min="1" value="1" >'+'</td>'+
+				'<td><input  style="width: 70px" type="number" class="form-control quantity" name="quantity[]" id="qtt'+no+'" max="'+quantity+'" min="1" value="1"  >'+'</td>'+
 				'<td style="display:none;"><input class="form-control" type="text" name="alias[]" value="'+alias+'">'+'</td>'+
 				'<td><input class="form-control amount" type="text" name="amount[]" value="'+price+'" readonly></td>'+
 				'<td class="remove"><button class="btn btn-danger">Xóa</button></td>'+

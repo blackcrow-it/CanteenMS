@@ -5,7 +5,7 @@
 @section('title', 'Danh sách nhân viên')
 
 @section('content_header')
-    <h1>Danh sach nhân viên</h1>
+   
 @stop
 
 @section('content')
@@ -18,10 +18,14 @@
 }
 </style>
 
-<input type="text" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
-
-    <div class="panel">
-    	<div class="panel-body">
+<div class="box box-success" data-widget="box-widget">
+	<div class="box-header with-border">
+		<h3 class="box-title header-title">Danh sách nhân viên</h3>
+		<div class="box-tools pull-right">
+			<input type="text" style=" border: none;" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">
+		</div>
+	</div>
+	
 			<table class="table table-hover">
 				<thead>
                 <tr class="success">

@@ -5,13 +5,17 @@
 @section('title', 'Thêm sản phẩm')
 
 @section('content_header')
-<h1>Sản Phẩm</h1>
+
 @stop
 
 @section('content')
-<div class="panel">
-	<div class="panel-body">
-
+<div class="panel box box-danger">
+	<div class="panel-body ">
+		<div class="box-header with-border">
+			<div class="box-title header-title">Thêm sản phẩm</div>
+			
+	</div>
+<br>
 	<div class="col-md-10">
 		<form action="{{ route('addProduct') }}" method="POST">
 		{{ csrf_field() }}

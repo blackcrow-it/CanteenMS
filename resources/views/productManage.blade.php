@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="box box-success" data-widget="box-widget">
-		<div class="box-header">
+		<div class="box-header with-border">
 			<h3 class="box-title">Sản phẩm</h3>
 			<div class="box-tools pull-right">
 				<input type="text" style=" border: none;" name="" id="myInput" placeholder="Tìm kiếm ..." class="form-control">

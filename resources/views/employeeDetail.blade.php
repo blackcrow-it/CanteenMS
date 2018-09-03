@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="panel">
+<div class="box box-success" data-widget="box-widget">
 @foreach($data as $p)
 <h2 class="text-center">Thông tin tài khoản: {{ $p->ten_tai_khoan }}</h2>
 <hr/>

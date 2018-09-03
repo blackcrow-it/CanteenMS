@@ -5,14 +5,20 @@
 @section('title', 'Thêm thông tin nhân viên')
 
 @section('content_header')
-<h1>Thêm thông tin nhân viên</h1>
+
 @stop
 
 @section('content')
-<div class="panel">
-	<div class="panel-body">
-
+ <div class="box box-success" data-widget="box-widget">
+		<div class="box-header ">
+				<div class="box-header with-border">
+						<div class="box-title header-title">Thêm nhân viên</div>
+						
+				</div>
+				
 	<div class="col-md-12">
+			
+		<br>
 		<form action="{{ route('addEmployee') }}" method="POST">
 		{{ csrf_field() }}
 
